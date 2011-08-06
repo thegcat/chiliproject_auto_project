@@ -1,0 +1,45 @@
+= ChiliProject Auto-Project Plugin
+
+This plugin creates a new top-level private project for new users.
+
+== Requirements
+
+This plugin aims to be compatible with
+
+* ChiliProject
+
+This plugin is pretty basic and should work with every flavor of ChiliProject,
+it probably works with Redmine too.
+
+== Installation
+
+Please follow the default {plugin installation instructions for
+ChiliProject}[https://www.chiliproject.org/projects/chiliproject/wiki/Plugin_Install].
+
+== Deinstallation
+
+Remove the Plugin from vendor/plugins
+
+    rm -r vendor/plugins/chiliproject_auto_project
+
+== Development
+
+To run the tests, you will need a current version of the finnlabs 
+{Redmine/ChiliProject Dev Tools}[https://github.com/finnlabs/redmine-dev-tools].
+After running
+
+    bundle install
+
+You should be able to execute the tests with
+
+    rake redmine:spec:auto_project
+
+If these instructions are insufficient, please open a ticket in the GitHub issue
+tracker with information about where you are stuck.
+
+
+== License
+
+(c) 2011 - Felix Schäfer
+
+This plugin is licensed under the MIT license. See COPYRIGHT.txt for details.
