@@ -8,7 +8,7 @@ describe User do
     let(:user) {Factory.create :user}
     
     describe "with no status change" do
-      # when calling user for the firs time, it actually gets created and goes through the whole
+      # when calling user for the first time, it actually gets created and goes through the whole
       # create a new project for the user thing, thus we need the role stubbing here too
       before do
         roles = [role]
@@ -101,6 +101,33 @@ describe User do
       it "should not change the user's projects" do
         subject.should_not change user, :projects
       end
+    end
+  end
+end
+
+describe Project do
+  let(:role) {Factory.create :role}
+  
+  before do
+    roles = [role]
+    roles.stub!(:find_by_id).and_return role
+    Role.stub!(:givable).and_return roles
+  end
+  
+  describe "when a project is auto-created for a user" do
+    let(:user) {Factory.create :user}
+    subject {user.projects[0]}
+    
+    it "then the project's name should be the user's name" do
+      subject.name.should eql user.name
+    end
+    
+    it "then the project's identifier should be the user's login" do
+      subject.identifier.should eql user.login
+    end
+    
+    it "then the project should not be public" do
+      subject.is_public.should_not be_true
     end
   end
 end

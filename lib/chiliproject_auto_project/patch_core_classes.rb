@@ -19,7 +19,7 @@ module Plugin
         def build_user_project
           return unless @was_activated
           user_project_identifier = login.gsub /[@.]/, '_'
-          user_project = Project.create :identifier => user_project_identifier, :name => name
+          user_project = Project.create :identifier => user_project_identifier, :name => name, :is_public => false
           user_project_role = Role.givable.find_by_id(Setting.new_project_user_role_id.to_i) || Role.givable.first
           memberships.create :project => user_project, :roles => [user_project_role]
         end
