@@ -4,7 +4,7 @@ Redmine::Plugin.register :chiliproject_auto_project do
   name 'Auto Project plugin'
   author 'Felix Schäfer'
   description 'This plugin creates a new top-level private project for new users.'
-  version '0.0.1'
+  version '1.0.0'
   url 'https://github.com/thegcat/chiliproject_auto_project'
 end
 
